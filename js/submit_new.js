@@ -10,7 +10,7 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
 					
 					for (i=0;i<someThing.length;i++) { //REPEATS FOR NUMBER OF OBJECTS FOUND FROM THE ABOVE
 						
-						var value = $(someThing[i]).text(); //SETS VARIABLE 'value' TO THE TEXT OF THE OBJECT NUMBER CORRESPONDING WITH THE REPEAT FUNCTION 
+						$(someThing[i]).text(); //SETS VARIABLE 'value' TO THE TEXT OF THE OBJECT NUMBER CORRESPONDING WITH THE REPEAT FUNCTION 
 						//alert(value);
 						value = value.slice(0, -1); //CUTS ONE LETTER OFF THE END (FORMATTING HACK)
 						

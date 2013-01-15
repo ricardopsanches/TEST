@@ -114,8 +114,22 @@ function rowClick(rowNum){
    				//7 = RETURN_TO
    				//8 = NEW_ART_CONCEPT_NUM
    				//9 = NAME
+   				//10 = STYLE_COLORS0
+   				//11 = STYLE_NUMBER0
+   				//12 = STYLE_COLORS1
+   				//13 = STYLE_NUMBER1
+   				//14 = STYLE_COLORS2
+   				//15 = STYLE_NUMBER2
+   				//16 = STYLE_COLORS3
+   				//17 = STYLE_NUMBER3
+   				//18 = STYLE_COLORS4
+   				//19 = STYLE_NUMBER4
    				
-    			//alert(Fdata[1]); 
+   				
+    			//alert("FD10: "+Fdata[10]); 
+    			//alert("FD11: "+Fdata[11]);
+    			//alert("FD12: "+Fdata[12]);
+    			//alert("FD13: "+Fdata[13]);
     			
     			
     			/////CHECKS IMAGE
@@ -223,6 +237,31 @@ function rowClick(rowNum){
     			
     			$( "#subButton" ).button({ label: "Update" });
     			$( "#subButton" ).attr('onclick', 'update_job('+job_id+')' );
+    			
+    			
+    				var stN = [];
+    				var stC = [];
+    				
+    				stN[0] = Fdata[10];
+    				stC[0] = Fdata[11];
+    				stN[1] = Fdata[12];
+    				stC[1] = Fdata[13];
+    				stN[2] = Fdata[14];
+    				stC[2] = Fdata[15];
+    				stN[3] = Fdata[16];
+    				stC[3] = Fdata[17];
+    				stN[4] = Fdata[18];
+    				stC[4] = Fdata[19];
+    				
+    				
+    				
+    				
+    			for (var m=0; m<5; m++) {
+    				//alert (stN[m]);
+    				reload_colors(m,stC[m])
+    				
+    			};
+    			
     			//$("#subButton").hide();
     			//"#subButton".id = 'updateButton'
     			//jQuery("#subButton").attr("id", "updateButton");

@@ -5,18 +5,20 @@
 		<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.custom.css">
 		<link rel="stylesheet" type="text/css" href="css/autocomplete.css">
 		<link rel="stylesheet" href="css/styles.css" />
-		  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 
 	
 	<!-- WHEN JQUERY DOES WEIRD THINGS, MAKE SURE THE LIBRARIES ARE COMPATABLE!!!! --!>
 	
-	<script src="http://code.jquery.com/jquery-latest.js"></script> 
 	
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> 
 		
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.8.24/jquery-ui.min.js"></script>	
+	
 		
-		<!-- attempting to add the below into the above --!>
+	<!-- attempting to add the below into the above --!>
 	<script type="text/javascript" src="js/jquery-ui-AF.js"></script>	
+	
 	
 	
 	<script src="js/jquery.filedrop.js"></script><!-- Including the HTML5 Uploader plugin -->
@@ -26,6 +28,7 @@
     <script src="js/jquery.tabSlideOut.v1.3.js"></script>
     
 	<script src="js/autoFillparams.js"></script>     <!-- AUTO FILL SCRIPT --!>
+	<script src="js/set_autoFillparams.js"></script>
 	
 	<script src="js/submit_new.js"></script>
 	<script src="js/update_job.js"></script>

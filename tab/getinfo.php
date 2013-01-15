@@ -45,7 +45,27 @@ if (!$info_row) {
 	$output .= mysql_result($info_row, 0, 'new_art_concept_num');
 	$output .= '|';
 	$output .= mysql_result($info_row, 0, 'name');
-	
+	$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_number0');
+	$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_colors0');
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_number1');
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_colors1');
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_number2');
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_colors2');
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_number3');
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_colors3');
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_number4');
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'style_colors4');
+		
     echo $output
     //echo $output
     
