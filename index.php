@@ -4,7 +4,7 @@
 		<link href="css/example-page.css" rel="stylesheet" type="text/css" media="all" />
 		<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.custom.css">
 		<link rel="stylesheet" type="text/css" href="css/autocomplete.css">
-		<link rel="stylesheet" href="assets/css/styles.css" />
+		<link rel="stylesheet" href="css/styles.css" />
 		  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 
 	
@@ -19,13 +19,16 @@
 	<script type="text/javascript" src="js/jquery-ui-AF.js"></script>	
 	
 	
-	<script src="assets/js/jquery.filedrop.js"></script><!-- Including the HTML5 Uploader plugin -->
+	<script src="js/jquery.filedrop.js"></script><!-- Including the HTML5 Uploader plugin -->
 																	
-	<script src="assets/js/script.js"></script><!-- The main script file for file dropper -->
+	<script src="js/script.js"></script><!-- The main script file for file dropper -->
 	
-    <script src="jquery.tabSlideOut.v1.3.js"></script>
+    <script src="js/jquery.tabSlideOut.v1.3.js"></script>
     
 	<script src="js/autoFillparams.js"></script>     <!-- AUTO FILL SCRIPT --!>
+	
+	<script src="js/submit_new.js"></script>
+	<script src="js/update_job.js"></script>
 	
 	<script>
 		var $dropFile = ""
@@ -33,7 +36,7 @@
          $(function(){
              $('.slide-out-div').tabSlideOut({
                  tabHandle: '.handle',                              //class of the element that will be your tab
-                 pathToTabImage: 'images/contact_tab.gif',          //path to the image for the tab (optionaly can be set using css)
+                 pathToTabImage: 'img/contact_tab.gif',          //path to the image for the tab (optionaly can be set using css)
                  imageHeight: '122px',                               //height of tab image
                  imageWidth: '40px',                               //width of tab image    
                  tabLocation: 'left',                               //side of screen where tab lives, top, right, bottom, or left
@@ -58,6 +61,7 @@
     //$("#sButton").buttonset();
     $( "#subButton" ).button({ label: "Submit" });
     $( "#subButton" ).css({ width: "80px", height: "22px", padding:"0px"});
+    //$( "#subButton" ).click(submit_new());
     
   });
 
@@ -240,7 +244,8 @@
     </tr>
     
     <tr>
-      <td height="20" id="subButton3" valign="baseline" class="tblBLNK-solo"><span class="field3Sub1">DUE DATE: </span><input type="text" id="datepicker" size="12" class="text ui-widget-content ui-corner-all" /></td>
+      <td height="20" id="subButton3" valign="baseline" class="tblBLNK-solo"><span class="field3Sub1">DUE DATE: </span>
+      <input type="text" id="datepicker" size="12" class="text ui-widget-content ui-corner-all" /></td>
       
       <td height="20" valign="baseline" class="tblBLNK-solo" >
       <span class="field3Sub1">ASSIGN TO: </span><input type="text" size="30" name="email_field" class="text ui-widget-content ui-corner-all" />
@@ -256,28 +261,23 @@
   			
   		<tr> 
 		 	<td width="50%" align="left" class="field1">
-				  	<div id="email_button"><input type="button" id="email_button" name="email_button" label="email">
+				  	<div id="email_button">Email<input type="button" id="email_button" name="email_button" label="email"  onClick=submit_email()>
 				  	</div>
-				  	<input type="button" id="clear_button" name="clear_button">
+				  	Clear<input type="button" id="clear_button" name="clear_button">
   			</td>
   			<td width="50%" align="right">
-  				<div id="sButton"><input type="button" id="subButton"></div>
+  				<div id="sButton"><input type="button" id="subButton" onclick=submit_new();></div>
   			</td>
   		</tr>	
   			
  	</table>
-
-
-
 
     <input type="hidden" name="inclColors0[]" id="inclColors0" value="" >
     <input type="hidden" name="inclColors1[]" id="inclColors1" value="" >
     <input type="hidden" name="inclColors2[]" id="inclColors2" value="" >
     <input type="hidden" name="inclColors3[]" id="inclColors3" value="" >
     <input type="hidden" name="inclColors4[]" id="inclColors4" value="" >
-	
-
-  
+	 
 <br>
  	
 </div>
@@ -315,22 +315,15 @@ var $strUser = new Array(0,0,0,0,0);
 //var $toArray = new Array();
 
 
-
-
-
-
-
-         
-            $('.handle').click(function() {
-					$("#sldTab").load("tab/tab_content.php");
-             });  
+$('.handle').click(function() {
+	$("#sldTab").load("tab/tab_content.php");
+});  
 
 //$(document).ready(function rldFNC() { // this runs as soon as the page is ready (DOM is loaded)
 //  $("#sldTab") // selecting "div" (you can also select the element by its id or class like in css )
 //   .load("tab/tab_content.html") // load in the file specified
 //  });
-  
-  
+   
 //ADDS A BLANK/DEFAULT VALUE TO THE BEGINNING OF EACH SELECTION BOX (APPEND ADDS TO THE END)
 $('#styNM0').prepend('<option value="0" selected="selected">STYLE #</option>');
 $('#styNM1').prepend('<option value="0" selected="selected">STYLE #</option>');
@@ -340,7 +333,7 @@ $('#styNM4').prepend('<option value="0" selected="selected">STYLE #</option>');
 
 
 
-//FUNCTION FOR CHANGING STYLE NUMBER TITLE BASED ON SELECTION CHANGE		
+////////////FUNCTION FOR CHANGING STYLE NUMBER TITLE BASED ON SELECTION CHANGE		
 function styChange(number){
   		var item = $("#styNM"+number).val();
   		if (item == 0) {
@@ -348,35 +341,32 @@ function styChange(number){
   		} else {
 
   			$("#drpVal"+number).text(item);
-  		};
+};
   		
 var e = document.getElementById("styNM"+number);
 
 $strUser[number] = e.options[e.selectedIndex].text;
 
 	for (var b=0; b<5; b++) {
-	
 		if ($strUser[b] == "STYLE #") {
-		
-			$strUser[b] = "0";
-			
+			$strUser[b] = "0";			
 		}
 	}
 };
 	
 	
 	
-		//FADE ON MOUSE OVER JQUERY SCRIPT	  
-		$("#dropbox").hover(function() {
-			$("#dropbox").fadeTo("slow", .9);
-		  },
-		  function(){
-			$("#dropbox").fadeTo("slow", 1); 
-		  });
+//FADE ON MOUSE OVER JQUERY SCRIPT	  
+$("#dropbox").hover(function() {
+	$("#dropbox").fadeTo("slow", .9);
+},
+function(){
+	$("#dropbox").fadeTo("slow", 1); 
+});
 		
 		
-		
-$("#email_button").click(function() {	
+///////////////////		
+$("#email_button").click(function() {
 		var eml = $('input[name=email_field]').val();
 		//alert(eml);
 		if (eml == "") {
@@ -393,167 +383,6 @@ $("#clear_button").click(function() {
 	location.reload();
 });		
 		
-		
-		
-		
-		
-		
-		//GETS SPAN OBJECTS & FORMATS POST SUBMISSION
-		$("#subButton").click(function() { //RESPONDS TO FORM SUBMISSION
-			var $toArray = []; //MAKE NEW ARRAY VARIABLE 'toArray'
-			
-			
-			for (var b=0; b<5; b++) {
-				var $toArray_sub = [];
-				var someThing = "";				
-				var someThing = $('#friends'+b).find('span') //SETS VARIABLE 'someThing' TO THE DIV ELEMENT 'friends0' AND FINDS EVER SPAN-OBJECT WITHIN 
-					
-					for (i=0;i<someThing.length;i++) { //REPEATS FOR NUMBER OF OBJECTS FOUND FROM THE ABOVE
-						
-						var value = $(someThing[i]).text(); //SETS VARIABLE 'value' TO THE TEXT OF THE OBJECT NUMBER CORRESPONDING WITH THE REPEAT FUNCTION 
-						//alert(value);
-						value = value.slice(0, -1); //CUTS ONE LETTER OFF THE END (FORMATTING HACK)
-						
-						$toArray_sub.push(value); //ADDS VALUE FORMATTED FROM ABOVE TO END OF THE ARRAY
-						//alert($toArray_sub)
-					}
-			
-			$toArray[b] = $toArray_sub
-			
-			//alert($toArray[b]);		
-			
-			document.getElementById('inclColors'+b).value =  $toArray; //PUSHES 'toArray' JOINED BY ',' TO MAKE A STRING, TO THE HIDDEN FIELD 'inclColors0'
-				///////document.getElementById('colors0').disabled = "disabled"; //REMOVES THE BLANK TEXT FIELD USED FOR AUTO FILLS FROM POST DATA SUBMISSION
-				
-				if(document.getElementById('styNM'+b).value == "0") {
-					//alert("blank");
-					//document.getElementById('styNM'+b).disabled = "disabled";
-				}			
-				//
-				if(document.getElementById('inclColors'+b).value == "") {
-					//alert("blank");
-					//document.getElementById('inclColors'+b).disabled = "disabled";
-				}				
-			}
-			///////////////////
-			
-			
-			
-			
-			
-			//var $PDGTradio = document.formAll[PGTradio];
-			
-		//alert ( PDGTradio );
-		
-		var page_type = $('input[name=PGTradio]:checked').val();
-		//var approved_by = $('input[name=apprvby[]]:checked').val();
-		
-		
-		var allVals = [];
-         $('#c_b :checked').each(function() {
-           allVals.push($(this).val());
-         });
-         
-         //////
-         var allVals2 = [];
-         $('#d_f :checked').each(function() {
-           allVals2.push($(this).val());
-         });
-         
-        ///// 
-		//var styCard0 = [];
-        // $('#d_f :checked').each(function() {
-        //   allVals2.push($(this).val());
-        // });
-		
-		//////
-		var cnum = $('input[name=cNum]').val();
-		if (cnum == "") {
-			alert ("Missing Concept Number!");
-			return
-		};
-		
-		//////
-		var cname = $('input[name=cName]').val();
-		if (cname == "") {
-			alert ("Missing Concept Name!");
-			return
-		};
-		
-		//////
-		//var stylnum0 = $('input[name=styNM0]').text();
-		//if (stylnum0 == "STYLE #") {
-		//	stylnum0 = ""
-		//};
-		//alert (stylnum0 );
-		
-		
-		//////
-		//var dDate = $('input[name=datepicker]').text();
-		//$('#datepicker').text = dDate;
-		var dDate = $( "#datepicker").datepicker({ dateFormat: 'yy-mm-dd' }).val();
-		//$(dDate).datepicker({ dateFormat: "yy-mm-dd" });
-		
-		
-		//if (cname == "") {
-			//alert (dDate);
-		//	return
-		//};
-		
-		/////		
-		if ($dropFile != "") {
-			var BGimage = $dropFile;	
-		}
-		else
-		{
-			alert ("Missing Image!");
-			return;
-		};
-		
-		/////
-		var cpyNum = $('input[name=hCopies]').val();
-		if (cpyNum == "") {
-			alert ("Invalid Quantity of Hard Copies!");
-			return
-		};
-		
-		/////
-		if (allVals == "") {
-			alert ("No Approval Indicated!");
-			return
-		};
-		
-		/////
-		if (allVals2 == "") {
-			alert ("No Request Type Indicated!");
-			return
-		};
-		
-	alert($strUser[2] + " " + $toArray[2])
-		
-			$.ajax({
-    type: "POST",
-    url: "submitForm.php",
-    data: {'PGTradio':page_type, 'apprvby':allVals, 'rqstneed':allVals2,'bgimage':BGimage, 'new_art_concept_num':cnum, 'copynum':cpyNum, 'art_name':cname, 'due_date':dDate, 
-    'style_number0':$strUser[0], 'style_colors0':$toArray[0], 
-    'style_number1':$strUser[1], 'style_colors1':$toArray[1], 
-    'style_number2':$strUser[2], 'style_colors2':$toArray[2], 
-    'style_number3':$strUser[3], 'style_colors3':$toArray[3], 
-    'style_number4':$strUser[4], 'style_colors4':$toArray[4], },
-    cache: false,
-    success: function()
-        {
-            alert("Order Submitted");
-        }
-    });
-    
-			
-			
-		});
-
-
-
-
 
 function alertFunction() {
 	alert("blank");
