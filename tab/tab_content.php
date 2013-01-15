@@ -219,8 +219,13 @@ function rowClick(rowNum){
     				$('#cName').val('');
     			};
     			
+    			var job_id = Fdata[0];
     			
-    			
+    			$( "#subButton" ).button({ label: "Update" });
+    			$( "#subButton" ).attr('onclick', 'update_job('+job_id+')' );
+    			//$("#subButton").hide();
+    			//"#subButton".id = 'updateButton'
+    			//jQuery("#subButton").attr("id", "updateButton");
     			
     			
     			

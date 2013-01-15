@@ -18,7 +18,7 @@
 					//EACH INLINE COMMAND SEEMS TO BE PART OF ".autocomplete" AND DEFINED BY JQUERY
 					source: function(req, add){ //define callback to format results
 						//alert("working1")
-						$.getJSON("friends.php?callback=?", req, function(data) { //pass request to server
+						$.getJSON("autoFill.php?callback=?", req, function(data) { //pass request to server
 							var suggestions = []; //create array for response objects
 							//process response
 							$.each(data, function(i, val){								
