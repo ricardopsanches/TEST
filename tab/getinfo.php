@@ -20,7 +20,7 @@ $sqlINFO = "SELECT * FROM `new_art_request` WHERE id='{$idRW}'";
 
 $info_row =  mysql_query($sqlINFO);
 if (!$info_row) {
-	echo "work";
+	//echo "work";
     die('Could not query:' . mysql_error());
 }
    

@@ -37,7 +37,7 @@ if (mysql_num_rows($result) > 0){
         	
         		<tr id=sqlRow-".$row->id." onmouseover=msOver(".$row->id.") onmouseout=msOut(".$row->id.")>
         		
-        			<td width=100px  onclick=rowClick(".$row->id.")>".$row->new_art_concept_num."</td>
+        			<td width=108px  onclick=rowClick(".$row->id.")>".$row->new_art_concept_num."</td>
         			
         			<td  width=120px>".$row->due_date."</td>
         			

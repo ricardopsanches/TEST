@@ -1,6 +1,7 @@
 //GETS SPAN OBJECTS & FORMATS POST SUBMISSION
 function submit_new() { //RESPONDS TO FORM SUBMISSION
 			var $toArray = []; //MAKE NEW ARRAY VARIABLE 'toArray'
+			//var value = ""
 			
 			
 			for (var b=0; b<5; b++) {
@@ -10,7 +11,7 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
 					
 					for (i=0;i<someThing.length;i++) { //REPEATS FOR NUMBER OF OBJECTS FOUND FROM THE ABOVE
 						
-						$(someThing[i]).text(); //SETS VARIABLE 'value' TO THE TEXT OF THE OBJECT NUMBER CORRESPONDING WITH THE REPEAT FUNCTION 
+						var value = $(someThing[i]).text(); //SETS VARIABLE 'value' TO THE TEXT OF THE OBJECT NUMBER CORRESPONDING WITH THE REPEAT FUNCTION 
 						//alert(value);
 						value = value.slice(0, -1); //CUTS ONE LETTER OFF THE END (FORMATTING HACK)
 						
@@ -43,7 +44,7 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
 			
 			//var $PDGTradio = document.formAll[PGTradio];
 			
-		//alert ( PDGTradio );
+		//alert ( "2" );
 		
 		var page_type = $('input[name=PGTradio]:checked').val();
 		//var approved_by = $('input[name=apprvby[]]:checked').val();
@@ -103,7 +104,9 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
 		/////	
 		var BGimage = $('#dropbox').css('background-image').replace(/^url|[\(\)]/g, '');	
 			if (BGimage != "") {
-			//var BGimage = crntImage;	
+			//var BGimage = crntImage;
+					BGimageF = BGimage.split('TEST/'); //USE NAME OF PARENT FOLDER HERE!
+					BGimage = BGimageF[1];
 			}
 			else
 		
@@ -131,7 +134,7 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
 			return
 		};
 		
-	alert($strUser[2] + " " + $toArray[2])
+	//alert($strUser[2] + " " + $toArray[2])
 		
 			$.ajax({
     type: "POST",
@@ -143,9 +146,13 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
     'style_number3':$strUser[3], 'style_colors3':$toArray[3], 
     'style_number4':$strUser[4], 'style_colors4':$toArray[4], },
     cache: false,
-    success: function()
+    success: function(echo)
         {
-            alert("New Job Information Submitted");
+           	//alert(echo);
+            $( "#subButton" ).button({ label: "Update" });
+			$( "#subButton" ).attr('onclick', 'update_job('+echo+')' );
+			alert("New Job Information Submitted");
+			
         }
     });
     

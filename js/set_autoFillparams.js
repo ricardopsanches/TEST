@@ -8,19 +8,21 @@ function reload_colors(nmb,data) {
 		$colorFieldPRNT = "friends"+nmb;
 		
 				
-				var someThing = $('#friends'+nmb).find('span'); //SETS VARIABLE 'someThing' TO THE DIV ELEMENT 'friends0' AND FINDS EVER SPAN-OBJECT WITHIN 
+				var someThing = $('#friends'+nmb).find('span').remove(); //
+				
+				
 					
-					for (i=0;i<someThing.length;i++) { //REPEATS FOR NUMBER OF OBJECTS FOUND FROM THE ABOVE
+					//for (i=0;i<someThing.length;i++) { //REPEATS FOR NUMBER OF OBJECTS FOUND FROM THE ABOVE
 						//alert (someThing[i]);
 						
-						$(someThing[i]).remove(); //SETS VARIABLE 'value' TO THE TEXT OF THE OBJECT NUMBER CORRESPONDING WITH THE REPEAT FUNCTION 
+					//	$(someThing[i]).remove(); //SETS VARIABLE 'value' TO THE TEXT OF THE OBJECT NUMBER CORRESPONDING WITH THE REPEAT FUNCTION 
 						
 						
 						//alert(value);
 						
 						//$toArray_sub.push(value); //ADDS VALUE FORMATTED FROM ABOVE TO END OF THE ARRAY
 						//alert($toArray_sub)
-					}
+					//}
 		
 		
 		

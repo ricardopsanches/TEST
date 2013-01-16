@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.custom.css">
 		<link rel="stylesheet" type="text/css" href="css/autocomplete.css">
 		<link rel="stylesheet" href="css/styles.css" />
+			<link rel="stylesheet" href="css/jQuery.searchBox.css" />
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 
 	
@@ -23,23 +24,27 @@
 	
 	<script src="js/jquery.filedrop.js"></script><!-- Including the HTML5 Uploader plugin -->
 																	
-	<script src="js/script.js"></script><!-- The main script file for file dropper -->
+	<script src="js/file_drop_script.js"></script><!-- The main script file for file dropper -->
 	
     <script src="js/jquery.tabSlideOut.v1.3.js"></script>
     
 	<script src="js/autoFillparams.js"></script>     <!-- AUTO FILL SCRIPT --!>
 	<script src="js/set_autoFillparams.js"></script>
+	<script src="js/load_data.js"></script>
+	
+		<script src="jQuery.searchBox.js"></script>
 	
 	<script src="js/submit_new.js"></script>
 	<script src="js/update_job.js"></script>
 	
 	<script>
+		var $strUser = new Array(0,0,0,0,0);
 		var $dropFile = ""
 		
          $(function(){
              $('.slide-out-div').tabSlideOut({
                  tabHandle: '.handle',                              //class of the element that will be your tab
-                 pathToTabImage: 'img/contact_tab.gif',          //path to the image for the tab (optionaly can be set using css)
+                 pathToTabImage: 'img/contact_tab.png',          //path to the image for the tab (optionaly can be set using css)
                  imageHeight: '122px',                               //height of tab image
                  imageWidth: '40px',                               //width of tab image    
                  tabLocation: 'left',                               //side of screen where tab lives, top, right, bottom, or left
@@ -64,7 +69,14 @@
     //$("#sButton").buttonset();
     $( "#subButton" ).button({ label: "Submit" });
     $( "#subButton" ).css({ width: "80px", height: "22px", padding:"0px"});
+    
+    $( "#clear_button" ).button({ label: "Clear" });
+    $( "#clear_button" ).css({ width: "80px", height: "22px", padding:"0px"});
+    
     //$( "#subButton" ).click(submit_new());
+   
+
+    
     
   });
 
@@ -263,10 +275,9 @@
 
   			
   		<tr> 
-		 	<td width="50%" align="left" class="field1">
-				  	<div id="email_button">Email<input type="button" id="email_button" name="email_button" label="email"  onClick=submit_email()>
-				  	</div>
-				  	Clear<input type="button" id="clear_button" name="clear_button">
+		 	<td width="50%" align="left">
+				  	<input type="button" id="clear_button" name="clear_button">
+				  	<!--<div id="email_button">Email<input type="button" id="email_button" name="email_button" label="email"  onClick=submit_email()></div>--!>
   			</td>
   			<td width="50%" align="right">
   				<div id="sButton"><input type="button" id="subButton" onclick=submit_new();></div>
@@ -305,7 +316,13 @@
 
 
 <?php 
-//print_r($_POST); 
+
+	$GETformID = $_GET['formID'];
+		if ($GETformID == '') {
+			$GETformID = '"null"';
+		}
+	
+ 	//print_r($GETformID);
 	//Free result set and close connection 
 	$query->close();
 	$mysqli->close();
@@ -313,9 +330,29 @@
 
     
 <script type="text/javascript">
+$(document).ready(function() {
 
-var $strUser = new Array(0,0,0,0,0);
+
+	
+	$('#styNM0').prepend('<option value="0" selected="selected">STYLE #</option>');
+	$('#styNM1').prepend('<option value="0" selected="selected">STYLE #</option>');
+	$('#styNM2').prepend('<option value="0" selected="selected">STYLE #</option>');
+	$('#styNM3').prepend('<option value="0" selected="selected">STYLE #</option>');
+	$('#styNM4').prepend('<option value="0" selected="selected">STYLE #</option>');
+	
+	var $getID = <?= $GETformID ?> ;
+		//alert("try: "+ $getID );
+	if ($getID != 'null') {
+			//alert( $getID );
+			rowClick($getID);
+	}
+	
+});
+
 //var $toArray = new Array();
+
+
+
 
 
 $('.handle').click(function() {
@@ -328,33 +365,31 @@ $('.handle').click(function() {
 //  });
    
 //ADDS A BLANK/DEFAULT VALUE TO THE BEGINNING OF EACH SELECTION BOX (APPEND ADDS TO THE END)
-$('#styNM0').prepend('<option value="0" selected="selected">STYLE #</option>');
-$('#styNM1').prepend('<option value="0" selected="selected">STYLE #</option>');
-$('#styNM2').prepend('<option value="0" selected="selected">STYLE #</option>');
-$('#styNM3').prepend('<option value="0" selected="selected">STYLE #</option>');
-$('#styNM4').prepend('<option value="0" selected="selected">STYLE #</option>');
+
+
+
+
+    
 
 
 
 ////////////FUNCTION FOR CHANGING STYLE NUMBER TITLE BASED ON SELECTION CHANGE		
 function styChange(number){
-  		var item = $("#styNM"+number).val();
+  	var item = $("#styNM"+number).val();
   		if (item == 0) {
    			$("#drpVal"+number).text("Select a garment style.");	
   		} else {
-
   			$("#drpVal"+number).text(item);
-};
-  		
-var e = document.getElementById("styNM"+number);
+		}; 		
+	var e = document.getElementById("styNM"+number);
 
-$strUser[number] = e.options[e.selectedIndex].text;
+	$strUser[number] = e.options[e.selectedIndex].text;
 
-	for (var b=0; b<5; b++) {
-		if ($strUser[b] == "STYLE #") {
+		for (var b=0; b<5; b++) {
+			if ($strUser[b] == "STYLE #") {
 			$strUser[b] = "0";			
+			}
 		}
-	}
 };
 	
 	
@@ -362,10 +397,16 @@ $strUser[number] = e.options[e.selectedIndex].text;
 //FADE ON MOUSE OVER JQUERY SCRIPT	  
 $("#dropbox").hover(function() {
 	$("#dropbox").fadeTo("slow", .9);
-},
-function(){
+},function(){
 	$("#dropbox").fadeTo("slow", 1); 
 });
+
+
+$("#dropbox").click(function() {
+	alert("This isn't awesome yet");
+
+});
+
 		
 		
 ///////////////////		
@@ -383,7 +424,7 @@ $("#email_button").click(function() {
 		
 		
 $("#clear_button").click(function() {	
-	location.reload();
+	window.location = "index.php";
 });		
 		
 

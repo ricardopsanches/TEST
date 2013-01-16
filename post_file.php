@@ -31,13 +31,15 @@ if(array_key_exists('pic',$_FILES) && $_FILES['pic']['error'] == 0 ){
 		exit_status('Uploads are ignored in demo mode.');
 	}
 	
+	$randName = generateRandomString();
+
 	
 	// Move the uploaded file from the temporary 
 	// directory to the uploads folder:
 	
-	if(move_uploaded_file($pic['tmp_name'], $upload_dir.$pic['name'])){
+	if(move_uploaded_file($pic['tmp_name'], $upload_dir.$randName.'.jpg')){
 		//$dropImage = $upload_dir.$pic['name'];
-		exit_status($upload_dir.$pic['name']);
+		exit_status($upload_dir.$randName.'.jpg');
 		
 	}
 	
@@ -45,6 +47,10 @@ if(array_key_exists('pic',$_FILES) && $_FILES['pic']['error'] == 0 ){
 
 exit_status('Something went wrong with your upload!');
 
+
+function generateRandomString($length = 10) {    
+    return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+}
 
 // Helper functions
 

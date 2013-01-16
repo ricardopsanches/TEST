@@ -13,13 +13,14 @@ if (!$con)
   die('Could not connect: ' . mysql_error());
   }
 
-$rqsts = implode('/', $_POST['rqstneed']);
-$apprvs = implode('/', $_POST['apprvby']);
-$styCL0 = implode('/', $_POST['style_colors0']);
-$styCL1 = implode('/', $_POST['style_colors1']);
-$styCL2 = implode('/', $_POST['style_colors2']);
-$styCL3 = implode('/', $_POST['style_colors3']);
-$styCL4 = implode('/', $_POST['style_colors4']);
+
+if ($_POST['rqstneed']) { $rqsts = implode('/', $_POST['rqstneed']); }
+if ($_POST['apprvby']) { $apprvs = implode('/', $_POST['apprvby']); }
+if ($_POST['style_colors0']) { $styCL0 = implode('/', $_POST['style_colors0']); }
+if ($_POST['style_colors1']) { $styCL1 = implode('/', $_POST['style_colors1']); }
+if ($_POST['style_colors2']) { $styCL2 = implode('/', $_POST['style_colors2']); }
+if ($_POST['style_colors3']) { $styCL3 = implode('/', $_POST['style_colors3']); }
+if ($_POST['style_colors4']) { $styCL4 = implode('/', $_POST['style_colors4']); }
 
 
 
@@ -48,18 +49,26 @@ VALUES(
 )";
 
 
-
-
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());
   }
+  
+  
+$sql_r="SELECT  `id` FROM  `new_art_request` WHERE  `image` =  '$_POST[bgimage]'";
+
+$resultID = mysql_query($sql_r);
+
+$this_id = mysql_result($resultID, 0, 'id');
 
 
 
 mysql_close($con);
 
 
+
+
+echo $this_id;
 
 
 ?>

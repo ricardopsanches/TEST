@@ -108,7 +108,9 @@ function update_job(sentID) { //RESPONDS TO FORM SUBMISSION
 		/////	
 		var BGimage = $('#dropbox').css('background-image').replace(/^url|[\(\)]/g, '');	
 			if (BGimage != "") {
-			//var BGimage = crntImage;	
+			//var BGimage = crntImage;
+					BGimageF = BGimage.split('TEST/'); //USE NAME OF PARENT FOLDER HERE!
+					BGimage = BGimageF[1];
 			}
 			else
 		
@@ -120,7 +122,7 @@ function update_job(sentID) { //RESPONDS TO FORM SUBMISSION
 		
 		
 		
-		
+		//alert("12");
 		
 		
 		
@@ -147,6 +149,7 @@ function update_job(sentID) { //RESPONDS TO FORM SUBMISSION
 			return
 		};
 		
+		//alert("3");
 		
 			$.ajax({
     type: "POST",
