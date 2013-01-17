@@ -45,7 +45,7 @@ if (!$info_row) {
 	$output .= mysql_result($info_row, 0, 'new_art_concept_num');
 	$output .= '|';
 	$output .= mysql_result($info_row, 0, 'name');
-	$output .= '|';
+	$output .= '|';			
 	$output .= mysql_result($info_row, 0, 'style_number0');
 	$output .= '|';
 	$output .= mysql_result($info_row, 0, 'style_colors0');
@@ -65,7 +65,18 @@ if (!$info_row) {
 	$output .= mysql_result($info_row, 0, 'style_number4');
 		$output .= '|';
 	$output .= mysql_result($info_row, 0, 'style_colors4');
-		
+	
+		$output .= '|';
+	$output .= mysql_result($info_row, 0, 'submitted_by');
+		$output .= '|';	
+	$output .= mysql_result($info_row, 0, 'assign_to');
+		$output .= '|';	
+	$output .= mysql_result($info_row, 0, 'related_id');
+		$output .= '|';	
+	$output .= mysql_result($info_row, 0, 'notes_1');
+		$output .= '|';		
+	$output .= mysql_result($info_row, 0, 'notes_2');
+	
     echo $output
     //echo $output
     

@@ -29,7 +29,11 @@ function rowClick(rowNum){
    				//17 = STYLE_NUMBER3
    				//18 = STYLE_COLORS4
    				//19 = STYLE_NUMBER4
-   				
+     			//20 = SUBMITTED_BY
+   				//21 = ASSIGN_TO
+   				//22 = RELATED_ID
+   				//23 = NOTES_1  				
+   				//24 = NOTES_2  				
    				
     			//alert("FD10: "+Fdata[10]); 
     			//alert("FD11: "+Fdata[11]);
@@ -137,6 +141,46 @@ function rowClick(rowNum){
     			} else {
     				$('#cName').val('');
     			};
+    			
+    			
+    			//20 = SUBMITTED_BY
+   				//21 = ASSIGN_TO
+   				//22 = RELATED_ID
+   				//23 = NOTES_1  				
+   				//24 = NOTES_2  
+    			
+     			/////CHECKS SUBMITTED_BY
+    			if (Fdata[20] != "") {
+    				$( "#subBY").val(Fdata[20]);
+    			} else {
+    				$('#subBY').val('');
+    			};   			
+    			
+     			/////CHECKS ASSIGN_TO
+    			if (Fdata[21] != "") {
+    				$( "#email_field").val(Fdata[21]);
+    			} else {
+    				$('#email_field').val('');
+    			};    			
+    			
+     			/////CHECKS NOTES_1
+    			if (Fdata[23] != "") {
+    				$( "#notesField1").val(Fdata[23]);
+    			} else {
+    				$('#notesField1').val('');
+    			};       			
+    			
+     			/////CHECKS NOTES_2
+    			if (Fdata[24] != "") {
+    				$( "#notesField2").val(Fdata[24]);
+    			} else {
+    				$('#notesField2').val('');
+    			};      			
+    			
+    			
+    			
+    			
+    			
     			
     			var job_id = Fdata[0];
     			

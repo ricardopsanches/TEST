@@ -99,7 +99,7 @@ function ajax_search(){
   var search_val=$("#search_term").val(); 
   
   if (search_val != "") {
-  	$.post("tab/sec.php", {search_term : search_val}, function(data){
+  	$.post("tab/table_results.php", {search_term : search_val}, function(data){
   	
   	if (data.length>0){ 
     	$("#search_results").html(data); 

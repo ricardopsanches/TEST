@@ -32,8 +32,16 @@ mysql_select_db("artrqst", $con);
 $artNum2 = mysql_real_escape_string($_POST['new_art_concept_num']);
 $artName = mysql_real_escape_string($_POST['art_name']);
 $due = mysql_real_escape_string($_POST['due_date']);
+$subBY = mysql_real_escape_string($_POST['submitted_by']);
+
+$asgnTo = mysql_real_escape_string($_POST['assign_to']);
+$rtrnTo = mysql_real_escape_string($_POST['return_to']);
+$note1 = mysql_real_escape_string($_POST['notes_1']);
+$note2 = mysql_real_escape_string($_POST['notes_2']);
+
 
 $sql="INSERT INTO new_art_request (image, approval, page_type, rqst_needed, new_art_concept_num, name, hardcopies, due_date,
+submitted_by, assign_to, return_to, notes_1, notes_2,
 style_number0, style_colors0,
 style_number1, style_colors1,
 style_number2, style_colors2,
@@ -41,6 +49,7 @@ style_number3, style_colors3,
 style_number4, style_colors4)
 VALUES(
 '$_POST[bgimage]','".$apprvs."','$_POST[PGTradio]','".$rqsts."','".$artNum2."','".$artName."','$_POST[copynum]','".$due."',
+'".$subBY."','".$asgnTo."','".$rtrnTo."','".$note1."','".$note2."',
 '$_POST[style_number0]','".$styCL0."',
 '$_POST[style_number1]','".$styCL1."',
 '$_POST[style_number2]','".$styCL2."',

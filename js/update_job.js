@@ -1,6 +1,15 @@
 //GETS SPAN OBJECTS & FORMATS POST SUBMISSION
 function update_job(sentID) { //RESPONDS TO FORM SUBMISSION
 	//alert(sentID);
+	
+	        if ($('#emailCHK').is(":checked")) {
+				var eml = $('input[name=email_field]').val();
+				if (eml == "") {
+					alert ("Missing Email!");
+					return
+				};	
+			};
+	
 			var $toArray = []; //MAKE NEW ARRAY VARIABLE 'toArray'
 			
 			
@@ -80,7 +89,43 @@ function update_job(sentID) { //RESPONDS TO FORM SUBMISSION
 			alert ("Missing Concept Name!");
 			return
 		};
+
+	//////////
+		var asgnFROM = $('input[name=subBY]').val();
+		if (asgnFROM == "") {
+			alert ("Missing Submission Name!");
+			return
+		};
 		
+		//////
+		var asgnTO = $('input[name=email_field]').val();
+		if (asgnTO == "") {
+			alert ("Missing Assign To!");
+			return
+		};		
+		
+		//////
+		var rtrnTO = $('input[name=return_to]').val();
+		//if (rtrnTO == "") {
+		//	alert ("Missing Assign To!");
+		//	return
+		//};
+		
+		//////
+		var notes1 = $('#notesField1').val();
+		//if (rtrnTO == "") {
+		//	alert ("Missing Assign To!");
+		//	return
+		//};		
+		
+		//////
+		var notes2 = $('#notesField2').val();
+		//if (rtrnTO == "") {
+		//	alert ("Missing Assign To!");
+		//	return
+		//};	
+		
+				
 		//////
 		//var stylnum0 = $('input[name=styNM0]').text();
 		//if (stylnum0 == "STYLE #") {
@@ -100,10 +145,6 @@ function update_job(sentID) { //RESPONDS TO FORM SUBMISSION
 			//alert (dDate);
 		//	return
 		//};
-		
-		
-		
-		
 		
 		/////	
 		var BGimage = $('#dropbox').css('background-image').replace(/^url|[\(\)]/g, '');	
@@ -155,6 +196,8 @@ function update_job(sentID) { //RESPONDS TO FORM SUBMISSION
     type: "POST",
     url: "updateForm.php",
     data: {'id':sentID, 'PGTradio':page_type, 'apprvby':allVals, 'rqstneed':allVals2,'bgimage':BGimage, 'new_art_concept_num':cnum, 'copynum':cpyNum, 'art_name':cname, 'due_date':dDate, 
+    'submitted_by':asgnFROM, 'assign_to':asgnTO,
+    'return_to':rtrnTO, 'notes_1':notes1, 'notes_2':notes2,
     'style_number0':$strUser[0], 'style_colors0':$toArray[0], 
     'style_number1':$strUser[1], 'style_colors1':$toArray[1], 
     'style_number2':$strUser[2], 'style_colors2':$toArray[2], 
@@ -163,6 +206,13 @@ function update_job(sentID) { //RESPONDS TO FORM SUBMISSION
     cache: false,
     success: function()
         {
+        	if ($('#emailCHK').is(":checked")) {
+        		//var cnum = ;
+        		//var cnam = $('input[name=cNam]').val();
+			 	//var $emailConfirm = 
+			 	submitEmail(sentID,$('input[name=cNum]').val(),$('input[name=cName]').val(),$('input[name=subBY]').val(),$( "#datepicker").datepicker().val());
+			 	$('#emailCHK').prop('checked', false);
+			}
             alert("Job Information Updated");
         }
     });

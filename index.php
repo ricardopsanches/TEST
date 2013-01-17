@@ -32,7 +32,7 @@
 	<script src="js/set_autoFillparams.js"></script>
 	<script src="js/load_data.js"></script>
 	
-		<script src="jQuery.searchBox.js"></script>
+	<script src="js/jQuery.searchBox.js"></script>
 	
 	<script src="js/submit_new.js"></script>
 	<script src="js/update_job.js"></script>
@@ -75,7 +75,7 @@
     
     //$( "#subButton" ).click(submit_new());
    
-
+	
     
     
   });
@@ -104,39 +104,93 @@
 
     <form method="post" enctype="multipart/form-data" id="formAll">
         
-<div class="field2" background-color="black" width=750px> <div id ="c_n"> CREATIVE ART REQUEST
+<div class="field3" background-color="black" width=750px> <!-- <div id ="c_n">--!> CREATIVE ART REQUEST
 
 
-  </div>
+  <!--</div>--!>
   
   <div id="dropbox" align="center">
 
 
   </div>
   
+  	<table width="100%" align="left">
+		 <tr> 
+		 
+		 
+		 	<td width="45%" class="field1">
+  				SUBMITTED BY:<input type="text" name="subBY" id="subBY" class="text ui-widget-content ui-corner-all" style="margin: 2 2 2 2;">
+  			</td>
+  			
+  			
+  			<td width="55%" class="field1">
+  				 <div align="right" class="field2Sub" id="c_b">
+  					ART APPROVED BY:   
+   					 <input name="apprvby[]" type="checkbox" id="chk1" accesskey="B" value="bill" style="vertical-align: 15%;"/>
+  					  BILL
+  					  <input name="apprvby[]" type="checkbox" id="chk2" accesskey="B" value="desi" style="vertical-align: 15%;"/>
+  					  DESI
+  					  <input name="apprvby[]" type="checkbox" id="chk3" accesskey="B" value="ed" style="vertical-align: 15%;"/>
+  					  ED
+  					  <input name="apprvby[]" type="checkbox" id="chk4" accesskey="B" value="mitch" style="vertical-align: 15%;"/>
+  					  MITCH
+				 </div>
+  			</td>
+  			
+  			
+  		</tr>
+ 		 </div>
+ 	</table>
 
- <div align="right" class="field2Sub" id="c_b">
-  ART APPROVED BY:   
-  <input name="apprvby[]" type="checkbox" id="chk1" accesskey="B" value="bill"/>
-  BILL
-  <input name="apprvby[]" type="checkbox" id="chk2" accesskey="B" value="desi" />
-  DESI
-  <input name="apprvby[]" type="checkbox" id="chk3" accesskey="B" value="ed" />
-  ED
-  <input name="apprvby[]" type="checkbox" id="chk4" accesskey="B" value="mitch" />
-  MITCH
-  </div>
+
+  
+  
 </div>
+  
+  
+<div class="field2" background-color="black" width=750px align="left">
+	
+	<table width="100%" align="left">
+		 <tr> 
+		 	<td width="50%" class="field1">
+  				NOTES 1
+  			</td>
+  			<td width="50%" class="field1">
+  				NOTES 2
+  			</td>
+  		</tr>
+ 		 </div>
+ 	</table>
+
+ 
+ <div align="right" id="notesfield">
+ 	
+	<table width="100%" border="2" align="center" class="tblBLNK_PARENT">
+		 <tr> 
+		 	<td td width="50%" align="left" valign="top" class="tblBLNK2">
+  				<textarea id="notesField1" name="notesField1" rows="7" cols="49" overflow="scroll" style="resize: none;"></textarea>
+  			</td>
+  			<td td width="50%" align="left" valign="top" class="tblBLNK2">
+  				<textarea id="notesField2" name="notesField2" rows="7" cols="49" overflow="scroll" style="resize: none;"></textarea>  			
+			</td>
+  		</tr>
+	</table>
+
+ 	
+ </div>  
+
+</div>  
+  
   
   
 <div class="field2" style="background-color:black">
 	<table width="100%" align="left">
 		 <tr> 
 		 	<td width="50%" class="field1">
-  				CONCEPT NUMBER:<input type="text" name="cNum" id="cNum" class="text ui-widget-content ui-corner-all">
+  				CONCEPT NUMBER:<input type="text" name="cNum" id="cNum" class="text ui-widget-content ui-corner-all" style="margin: 2 2 2 3;">
   			</td>
   			<td width="50%" class="field1">
-  				CONCEPT NAME:<input type="text" name="cName" id="cName" class="text ui-widget-content ui-corner-all">
+  				CONCEPT NAME:<input type="text" name="cName" id="cName" class="text ui-widget-content ui-corner-all" style="margin: 2 2 2 3;">
   			</td>
   		</tr>
  		 </div>
@@ -149,20 +203,20 @@
       <div align="left" class="field3Sub2"> <span class="field3Sub1"><strong>PAGE TYPE:<br />
         </strong> </span>
         
-        <input type="radio" name="PGTradio" id="pgTYP" value="grp" checked/>
+        <input type="radio" name="PGTradio" id="pgTYP" value="grp" style="vertical-align: 15%;" checked/>
         <label for="pgTYP">GRAPHIC</label>
         
-        <input type="radio" name="PGTradio" id="pgTYP2" value="mkp"/>
+        <input type="radio" name="PGTradio" id="pgTYP2" value="mkp" style="vertical-align: 15%;"/>
         <label for="pgTYP2">MOCK-UP</label>
         
         <div class="hr"><hr align="center" width="99%" size="2" noshade="noshade" color="#000000"></div>
         <div id="d_f">
         <span class="field3Sub1"></span> <strong> NEEDED FOR REQUEST:<br>
-        <input name="rqstneed[]" type="checkbox" id="rqBox1" value="fullsz">
+        <input name="rqstneed[]" type="checkbox" id="rqBox1" value="fullsz" style="vertical-align: 15%;">
         <label for="rqstNeed" class="field3Sub2">FULL SIZE COPY</label>
-        <input name="rqstneed[]" type="checkbox" id="rqBox2" value="jpeg">
+        <input name="rqstneed[]" type="checkbox" id="rqBox2" value="jpeg" style="vertical-align: 15%;">
         <label for="rqstNeed" class="field3Sub2">JPEG</label>
-        <input name="rqstneed[]" type="checkbox" id="rqBox3" value="pdf">
+        <input name="rqstneed[]" type="checkbox" id="rqBox3" value="pdf" style="vertical-align: 15%;">
         <label for="rqstNeed" class="field3Sub2">PDF</label>
         </div>
           </strong></div>
@@ -183,6 +237,7 @@
         <input id="colors0" type="text" onFocus=selectedEF("colors0","friends0") onInput=autoFill()>
       </div>
       </td>
+      
     </tr>
 
 
@@ -253,18 +308,48 @@
 	
 	
     <tr>
-      <td height="20" id="subButton3" valign="baseline" class="tblBLNK-solo"><span class="field3Sub1">NUMBER OF HARD COPIES: </span><input type="number" name="hCopies" id="hCopies" min="0" max="11" value="0"></td>
+      <td height="20" id="subButton3" valign="baseline" class="tblBLNK-solo">     </td>
       
-      <td height="20" valign="baseline" class="tblBLNK-solo" ><span class="field3Sub1">RETURN TO: </span><input type="text" size="29" class="text ui-widget-content ui-corner-all" /></td>
+      <td height="20" valign="baseline" class="tblBLNK-solo" >
+      	<table class="tblBLNK-solo">
+      		<tr >
+      			<td width="auto">
+      				<span>RETURN TO: </span><input type="text" name="return_to" size="20" class="text ui-widget-content ui-corner-all" />
+      			</td>
+      			<td width="42%" align="right">
+      				COPIES:<input type="number" name="hCopies" id="hCopies" min="0" max="11" value="0">
+      			</td>
+      		</tr>
+      	</table>
+      </td>
     </tr>
     
     <tr>
-      <td height="20" id="subButton3" valign="baseline" class="tblBLNK-solo"><span class="field3Sub1">DUE DATE: </span>
-      <input type="text" id="datepicker" size="12" class="text ui-widget-content ui-corner-all" /></td>
+      <td height="20" id="subButton3" valign="baseline" class="tblBLNK-solo"></td>
       
       <td height="20" valign="baseline" class="tblBLNK-solo" >
-      <span class="field3Sub1">ASSIGN TO: </span><input type="text" size="30" name="email_field" class="text ui-widget-content ui-corner-all" />
-      	<input name="emailCHK" type="checkbox" id="emailCHK" value="y">Notify
+      
+        <table class="tblBLNK-solo">
+      		<tr >
+      			<td width="auto">
+      				<span class="field3Sub1">ASSIGN TO: </span><input type="text" size="21" name="email_field" id="email_field" class="text ui-widget-content ui-corner-all" /><img src="img/email_icon.gif" width="16" height="16" style="vertical-align: middle;"><input name="emailCHK" type="checkbox" id="emailCHK">
+      				
+
+      			</td>
+      			<td width="34.7%" align="right">
+      				<span class="field3Sub1">DUE: </span><input type="text" id="datepicker" size="12" class="text ui-widget-content ui-corner-all" />
+      			</td>
+      		</tr>
+      	</table>
+      
+      
+      
+      
+      
+      
+      	
+      	
+      	
       
   		</td>
     </tr>
@@ -292,7 +377,7 @@
     <input type="hidden" name="inclColors3[]" id="inclColors3" value="" >
     <input type="hidden" name="inclColors4[]" id="inclColors4" value="" >
 	 
-<br>
+
  	
 </div>
 	
@@ -321,6 +406,12 @@
 		if ($GETformID == '') {
 			$GETformID = '"null"';
 		}
+		
+	$GETformEDT = $_GET['edt'];
+		if ($GETformEDT == '') {
+			$GETformEDT = '"null"';
+		}
+		
 	
  	//print_r($GETformID);
 	//Free result set and close connection 
@@ -345,7 +436,17 @@ $(document).ready(function() {
 	if ($getID != 'null') {
 			//alert( $getID );
 			rowClick($getID);
-	}
+	};
+	
+	var $getEDT = <?= $GETformEDT ?> ;
+		if ($getEDT != 'null') {
+			if ($getEDT == 0) {
+				$("#notesField1").prop("disabled", false);
+			} else {
+				$("#notesField1").prop("disabled", true);
+			};
+		};
+	
 	
 });
 
@@ -410,17 +511,18 @@ $("#dropbox").click(function() {
 		
 		
 ///////////////////		
-$("#email_button").click(function() {
-		var eml = $('input[name=email_field]').val();
-		//alert(eml);
-		if (eml == "") {
-			alert ("Missing Email!");
-			return
-		};	
-	$.post("sub_email.php", {post_email : eml}, function(data){
-     	alert("Mail Sent"); 
+function submitEmail(dataID,dataNUM,dataNAM,dataFRM,dataDUE) {
+	var eml = $('input[name=email_field]').val();
+
+		//alert(dataNAM);
+		//if (eml == "") {
+		//	alert ("Missing Email!");
+		//	return
+		//};	
+	$.post("sub_email.php", {post_email : eml, post_id : dataID, post_cnum : dataNUM, post_cnam : dataNAM, post_from : dataFRM, post_date : dataDUE}, function(data){
+     	alert("Message Sent"); 
   	})
-});
+};
 		
 		
 $("#clear_button").click(function() {	
@@ -428,13 +530,13 @@ $("#clear_button").click(function() {
 });		
 		
 
-function alertFunction() {
-	alert("blank");
-	};
-	
-function bgFunction(data) {
-	alert(data);
-	};	
+//function alertFunction() {
+//	alert("blank");
+//};
+//	
+//function bgFunction(data) {
+//	alert(data);
+//};	
 
 
 </script>
