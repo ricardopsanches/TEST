@@ -79,7 +79,16 @@ $(function(){
     	
     	
     	//$imageUrl2 = $dropImage
+    	
+    	//imgFormat = "<img id=jobImage src="
+    	//imgFormat .= $dropFile
+    	//imgFormat .= " />"
+    	
     	$('#dropbox').css('background-image', 'url(' + $dropFile + ')').css('background-repeat', 'no-repeat').css('background-position', 'center top').css('background-size', 'auto 100%');
+    	
+    	
+    	//$('#dropbox').prepend('<img id="jobIMG" src="' + $dropFile + '" />');
+    	
     	//
     	
     	

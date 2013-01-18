@@ -21,15 +21,6 @@ if(array_key_exists('pic',$_FILES) && $_FILES['pic']['error'] == 0 ){
 		exit_status('Only '.implode(',',$allowed_ext).' files are allowed!');
 	}	
 
-	if($demo_mode){
-		
-		// File uploads are ignored. We only log them.
-		
-		$line = implode('		', array( date('r'), $_SERVER['REMOTE_ADDR'], $pic['size'], $pic['name']));
-		file_put_contents('log.txt', $line.PHP_EOL, FILE_APPEND);
-		
-		exit_status('Uploads are ignored in demo mode.');
-	}
 	
 	$randName = generateRandomString();
 

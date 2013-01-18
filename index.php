@@ -7,6 +7,12 @@
 		<link rel="stylesheet" href="css/styles.css" />
 			<link rel="stylesheet" href="css/jQuery.searchBox.css" />
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+			<link rel="stylesheet" href="css/wPaint.css" type="text/css"/>
+			<link rel="stylesheet" href="css/wColorPicker.css" type="text/css"/>
+			<link rel="stylesheet" href="css/slimbox2.css" type="text/css" media="screen"/>
+
+
+
 
 	
 	<!-- WHEN JQUERY DOES WEIRD THINGS, MAKE SURE THE LIBRARIES ARE COMPATABLE!!!! --!>
@@ -27,6 +33,12 @@
 	<script src="js/file_drop_script.js"></script><!-- The main script file for file dropper -->
 	
     <script src="js/jquery.tabSlideOut.v1.3.js"></script>
+    
+    	<script type="text/javascript" src="js/slimbox2.js"></script>
+		
+		<script type="text/javascript" src="js/wPaint.js"></script>
+		<script type="text/javascript" src="js/wColorPicker.js"></script>
+
     
 	<script src="js/autoFillparams.js"></script>     <!-- AUTO FILL SCRIPT --!>
 	<script src="js/set_autoFillparams.js"></script>
@@ -75,6 +87,8 @@
     
     //$( "#subButton" ).click(submit_new());
    
+      
+	//$('#dropbox').lightBox();
 	
     
     
@@ -119,7 +133,7 @@
 		 
 		 
 		 	<td width="45%" class="field1">
-  				SUBMITTED BY:<input type="text" name="subBY" id="subBY" class="text ui-widget-content ui-corner-all" style="margin: 2 2 2 2;">
+  				SUBMITTED BY:<input type="text" name="subBY" id="subBY" class="text ui-widget-content ui-corner-all" style="margin: 5 2 2 2; vertical-align: 10%;">
   			</td>
   			
   			
@@ -152,11 +166,11 @@
 	
 	<table width="100%" align="left">
 		 <tr> 
-		 	<td width="50%" class="field1">
-  				NOTES 1
+		 	<td width="50%" class="field1" style="padding: 0 0 0 4; text-align:center;">
+  				MERCHANDISING NOTES
   			</td>
-  			<td width="50%" class="field1">
-  				NOTES 2
+  			<td width="50%" class="field1" style="padding: 0 0 0 4; text-align:center;">
+  				ARTIST NOTES
   			</td>
   		</tr>
  		 </div>
@@ -165,13 +179,13 @@
  
  <div align="right" id="notesfield">
  	
-	<table width="100%" border="2" align="center" class="tblBLNK_PARENT">
+	<table width="100.5%" border="2" align="center" class="tblBLNK_PARENT">
 		 <tr> 
 		 	<td td width="50%" align="left" valign="top" class="tblBLNK2">
-  				<textarea id="notesField1" name="notesField1" rows="7" cols="49" overflow="scroll" style="resize: none;"></textarea>
+  				<textarea id="notesField1" name="notesField1" rows="7" cols="49" overflow="scroll" style="resize: none; width: 100%;"></textarea>
   			</td>
   			<td td width="50%" align="left" valign="top" class="tblBLNK2">
-  				<textarea id="notesField2" name="notesField2" rows="7" cols="49" overflow="scroll" style="resize: none;"></textarea>  			
+  				<textarea id="notesField2" name="notesField2" rows="7" cols="49" overflow="scroll" style="resize: none; width: 100%;"></textarea>  			
 			</td>
   		</tr>
 	</table>
@@ -183,20 +197,20 @@
   
   
   
-<div class="field2" style="background-color:black">
-	<table width="100%" align="left">
+<div class="field2" style="background-color:black;">
+
+	<table width="100%" align="left" >
 		 <tr> 
-		 	<td width="50%" class="field1">
-  				CONCEPT NUMBER:<input type="text" name="cNum" id="cNum" class="text ui-widget-content ui-corner-all" style="margin: 2 2 2 3;">
+		 	<td width="50%" class="field1" style="padding: 0 0 0 2;">
+  				CONCEPT NUMBER:<input type="text" name="cNum" id="cNum" class="text ui-widget-content ui-corner-all" style="margin: 2 2 2 3; vertical-align: 10%;">
   			</td>
-  			<td width="50%" class="field1">
-  				CONCEPT NAME:<input type="text" name="cName" id="cName" class="text ui-widget-content ui-corner-all" style="margin: 2 2 2 3;">
+  			<td width="50%" class="field1" style="padding: 0 0 0 2;">
+  				CONCEPT NAME:<input type="text" name="cName" id="cName" class="text ui-widget-content ui-corner-all" style="margin: 2 2 2 3; vertical-align: 10%;">
   			</td>
   		</tr>
- 		 </div>
  	</table>
   
-  <table width="100%" border="2" align="left" cellpadding="5" class="tblBLNK_PARENT">
+  <table width="100%" border="2" cellpadding="5" class="tblBLNK_PARENT" >
     <tr>      
 <!--//      ISOLATED CELL FORMATTING-->    
   <td width="50%" valign="top" bgcolor="#FFFFFF" class="tblBLNK-solo">
@@ -311,13 +325,14 @@
       <td height="20" id="subButton3" valign="baseline" class="tblBLNK-solo">     </td>
       
       <td height="20" valign="baseline" class="tblBLNK-solo" >
-      	<table class="tblBLNK-solo">
+      	<table class="tblBLNK-solo" width="100%">
       		<tr >
-      			<td width="auto">
-      				<span>RETURN TO: </span><input type="text" name="return_to" size="20" class="text ui-widget-content ui-corner-all" />
+      			<td width="225px">
+      				<span>RETURN TO: </span><input type="text" name="return_to" size="13" class="text ui-widget-content ui-corner-all" />
       			</td>
-      			<td width="42%" align="right">
-      				COPIES:<input type="number" name="hCopies" id="hCopies" min="0" max="11" value="0">
+      			<td width="auto"></td>
+      			<td width="105px" align="right">
+      				COPIES:<input type="number" name="hCopies" id="hCopies" size="2" min="0" max="11" value="0">
       			</td>
       		</tr>
       	</table>
@@ -329,15 +344,14 @@
       
       <td height="20" valign="baseline" class="tblBLNK-solo" >
       
-        <table class="tblBLNK-solo">
+        <table class="tblBLNK-solo" width="100%">
       		<tr >
-      			<td width="auto">
-      				<span class="field3Sub1">ASSIGN TO: </span><input type="text" size="21" name="email_field" id="email_field" class="text ui-widget-content ui-corner-all" /><img src="img/email_icon.gif" width="16" height="16" style="vertical-align: middle;"><input name="emailCHK" type="checkbox" id="emailCHK">
-      				
-
+      			<td width="225px">
+      				<span class="field3Sub1">ASSIGN TO: </span><input type="text" size="14" name="email_field" id="email_field" class="text ui-widget-content ui-corner-all" /><img src="img/email_icon.gif" width="16" height="16" style="vertical-align: middle;"><input name="emailCHK" type="checkbox" id="emailCHK">
       			</td>
-      			<td width="34.7%" align="right">
-      				<span class="field3Sub1">DUE: </span><input type="text" id="datepicker" size="12" class="text ui-widget-content ui-corner-all" />
+      			<td width="auto"></td>
+      			<td width="129px" align="right">
+      				<span class="field3Sub1">DUE: </span><input type="text" id="datepicker" size="11" class="text ui-widget-content ui-corner-all" />
       			</td>
       		</tr>
       	</table>
@@ -396,6 +410,11 @@
 </div>
 
 <div id='message'></div>
+
+<div id="paintCanvas" style="position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; pointer-events:none; visibility: hidden;"> </div>
+
+<div id="paintCanvasPARENT" align="left" style="position: fixed; z-index: 100; left: 80%; top: 0; width: 100%; height: 20px; border-bottom-left-radius: 6px; background-color: white; pointer-events:all; visibility: hidden;"><a href="javascript:imageShrink();">CLOSE</a><a>|</a><a href="javascript:saveImage();">SAVE</a></div>
+
 	</body>
 </html>
 
@@ -423,7 +442,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-
+	$("#paintCanvas").wPaint();
 	
 	$('#styNM0').prepend('<option value="0" selected="selected">STYLE #</option>');
 	$('#styNM1').prepend('<option value="0" selected="selected">STYLE #</option>');
@@ -451,6 +470,13 @@ $(document).ready(function() {
 });
 
 //var $toArray = new Array();
+
+
+
+	
+	
+
+
 
 
 
@@ -504,11 +530,62 @@ $("#dropbox").hover(function() {
 
 
 $("#dropbox").click(function() {
-	alert("This isn't awesome yet");
-
+	imageExplode();
 });
 
+function imageExplode() {
+	$("#paintCanvasPARENT").hide();
+	$("#paintCanvasPARENT").css('visibility','visible');
+		$("#paintCanvas").hide();
+		$("#paintCanvas").css('visibility','visible');	
+			$("#paintCanvas").delay(800).fadeIn(400);
+			$("#paintCanvasPARENT").delay(800).fadeIn(400);	
+				$("#paintCanvas").css('pointer-events','all');
+
+	jQuery.slimbox($dropFile);
+		$("#lbBottomContainer").remove();
+};	
+
+
+function imageShrink() {
+
+
+		$('#lbOverlay').trigger('click');
 		
+		$("#paintCanvas").hide();
+		$("#paintCanvasPARENT").hide();
+		//$("#paintCanvas").css('pointer-events','none');
+};
+
+
+function saveImage() {
+		
+		var noteImageData = $("#paintCanvas").wPaint("image");
+		
+				//alert(imageData);
+		//$("#message").attr("src", imageData);
+		//$(document.body).append('<img src="'+noteImageData+'">');
+		
+			
+			
+	$.ajax({
+    type: "POST",
+    url: "post_file_notes.php",
+    data: {'img':noteImageData },
+    cache: false,
+    success: function(echo)
+        {
+			alert(echo);
+        }
+    });
+    
+    
+		
+		
+		
+};	
+
+	
 		
 ///////////////////		
 function submitEmail(dataID,dataNUM,dataNAM,dataFRM,dataDUE) {

@@ -1,6 +1,8 @@
 ///
 function rowClick(rowNum){
 	//alert("rowClick started");
+	var $imageArea = $('#dropbox').css('background-image')
+	
 	$.post("tab/getinfo.php", {row_id : rowNum}, function(data){
    		
    		if (data.length>0){ 
@@ -44,6 +46,7 @@ function rowClick(rowNum){
     			/////CHECKS IMAGE
     			if (Fdata[1] != "") {
     				$('#dropbox').css('background-image', 'url(' + Fdata[1] + ')').css('background-repeat', 'no-repeat').css('background-position', 'center top').css('background-size', 'auto 100%');
+    				$dropFile = Fdata[1]
     			} else {
     				$('#dropbox').css('background-image', 'none');
     			}
@@ -216,6 +219,7 @@ function rowClick(rowNum){
     					 $("#styNM"+m).find("option:contains("+stN[m]+")").each(function(){
     					 	if( $(this).text() == stN[m] ) {
       							$(this).attr("selected","selected");
+      							styChange(m);
     						}
 						 });
 
