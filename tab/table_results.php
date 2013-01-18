@@ -14,7 +14,7 @@ $term = strip_tags(substr($_POST['search_term'],0, 100));
 
 $term = mysql_escape_string($term); 
 
-$sql = "select id,new_art_concept_num,due_date from new_art_request where new_art_concept_num like '%$term%' order by new_art_concept_num asc";
+$sql = "select id,image,new_art_concept_num,name from new_art_request where new_art_concept_num like '%$term%' order by new_art_concept_num asc";
 
 $result = mysql_query($sql);
 
@@ -33,19 +33,19 @@ if (mysql_num_rows($result) > 0){
           echo "
        			<style type='text/css'> #sqlRow-".$row->id." { background-color: white; color: black; } </style>
        			
-        	<table border=0 cellspacing=1 cellpading=0>
+        	<table width=229px border=0 cellspacing=1 cellpading=0 style='table-layout:fixed;'>
         	
-        		<tr id=sqlRow-".$row->id." onmouseover=msOver(".$row->id.") onmouseout=msOut(".$row->id.")>
+        		<tr id=sqlRow-".$row->id." onmouseover=msOver(".$row->id.",'".$row->image."') onmouseout=msOut(".$row->id.",'".$row->image."') style='height:1em;'>
         		
-        			<td width=108px onclick=rowClick(".$row->id.")>".$row->new_art_concept_num."</td>
+        			<td style='width: 90px; overflow:hidden; white-space:nowrap; cursor:pointer;' onclick=rowClick(".$row->id.")>".$row->new_art_concept_num."</td>
         			
-        			<td  width=120px onclick=rowClick(".$row->id.")>".$row->due_date."</td>
+        			<td style='width: auto; overflow:hidden; white-space:nowrap; cursor:pointer;' onclick=rowClick(".$row->id.")>".$row->name."</td>
         			
-        			
-        			<td><font color=red><a href= id='dltRow-".$row->id."' onclick=rowDLT(".$row->id.") onmouseover=rowDLTOVR(".$row->id.")>X</a></font></td>
-        			
-        		</tr>  		
+        			</tr>  		
         		";
+        			//<td width=9px><font color=red><a href= id='dltRow-".$row->id."' onclick=rowDLT(".$row->id.") onmouseover=rowDLTOVR(".$row->id.")>X</a></font></td>
+        			
+        		
   
   
   

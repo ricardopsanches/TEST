@@ -43,7 +43,7 @@ $sql="UPDATE `new_art_request` SET `image` = '$_POST[bgimage]', `approval` = '".
 `name` = '".$artName."', `hardcopies` = '$_POST[copynum]', `due_date` = '".$due."', `submitted_by` = '".$subBY."', `assign_to` = '".$asgnTo."', `return_to` = '".$rtrnTo."', `notes_1` = '".$note1."', `notes_2` = '".$note2."',
 `style_number0` = '$_POST[style_number0]', `style_colors0` = '".$styCL0."',
  `style_number1` = '$_POST[style_number1]', `style_colors1` = '".$styCL1."', `style_number2` = '$_POST[style_number2]', `style_colors2` = '".$styCL2."',
-  `style_number3` = '$_POST[style_number3]', `style_colors3` = '".$styCL3."', `style_number4` = '$_POST[style_number4]', `style_colors4` = '".$styCL4."' WHERE `new_art_request`.`id` =  '$_POST[id]'";
+  `style_number3` = '$_POST[style_number3]', `style_colors3` = '".$styCL3."', `style_number4` = '$_POST[style_number4]', `style_colors4` = '".$styCL4."', `scribbles` = '$_POST[scrib]' WHERE `new_art_request`.`id` =  '$_POST[id]'";
 
 //(image, approval, page_type, rqst_needed, new_art_concept_num, name, hardcopies, due_date,
 

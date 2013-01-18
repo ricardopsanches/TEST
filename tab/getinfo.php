@@ -76,6 +76,8 @@ if (!$info_row) {
 	$output .= mysql_result($info_row, 0, 'notes_1');
 		$output .= '|';		
 	$output .= mysql_result($info_row, 0, 'notes_2');
+			$output .= '|';		
+	$output .= mysql_result($info_row, 0, 'scribbles');
 	
     echo $output
     //echo $output

@@ -2,15 +2,52 @@
     <head>
 <!-- ///////////////////////////////////////////////////////////////////// --!>
 <script type="text/javascript">
-function msOver(rowNum){
+$(document).ready(function() {
+
+
+     $(document).mousemove(function(e){
+          window.mouseXPos = e.pageX;
+          window.mouseYPos = e.pageY;
+          	var $imgDIVy = $('#lbCenter').height();
+          	var $imgDIVx = $('#lbCenter').width();
+          		//alert($imgDIVx);
+          //alert("X:"+window.mouseXPos+"|Y:"+window.mouseYPos);
+    }); 
+
+});
+
+
+function msOver(rowNum,img){
+			xOffset = 10;
+		yOffset = 20;	
+	//alert(img);
 	//alert("mouse in");
 	$("#sqlRow-"+rowNum).css({"backgroundColor": "#DDDDDD", "color": "black"});
+	
+
+	
+	$(document.body).append('<div id="thumbPreview" align="left" style="position: fixed; z-index: 800; left: '+window.mouseXPos+'px; top: '+window.mouseYPos+'px; width: auto; height: auto; background-color: white; pointer-events:none;"></div>');
+	
+	
+	$("#thumbPreview").hide();
+	
+	//$("#thumbPreview").show();
+	
+	$("#thumbPreview").append("<img src='"+img+"' style='max-width: 300px; border-color:grey;' border=2px>");
+	//$("#thumbPreview").append("<p>"+img+"</p>");
+		$("#thumbPreview").delay("800").fadeIn("fast");
+			//.css("top",window.mouseYPos+"px")
+			//.css("left",window.mouseXPos+"px")
+			//.css("background-color","Blue")
+			
+	
 };
 
 ///
-function msOut(rowNum){
+function msOut(rowNum,img){
 	//alert("mouse in");
 	$("#sqlRow-"+rowNum).css({"backgroundColor": "white", "color": "black"});
+		$("#thumbPreview").remove();
 };
 
 ///

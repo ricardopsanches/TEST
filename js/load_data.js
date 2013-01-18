@@ -35,7 +35,8 @@ function rowClick(rowNum){
    				//21 = ASSIGN_TO
    				//22 = RELATED_ID
    				//23 = NOTES_1  				
-   				//24 = NOTES_2  				
+   				//24 = NOTES_2  
+   				//25 = SCRIBBLES				
    				
     			//alert("FD10: "+Fdata[10]); 
     			//alert("FD11: "+Fdata[11]);
@@ -180,7 +181,14 @@ function rowClick(rowNum){
     				$('#notesField2').val('');
     			};      			
     			
-    			
+       			/////CHECKS SCRIBBLES
+    			if (Fdata[25] != "") {
+    				//alert(Fdata[25]);
+    				//var $scribbles = Fdata[25];
+    				loadImage(Fdata[25]);
+    			} else {
+    				$("#paintCanvas").wPaint("clear")
+    			}; 
     			
     			
     			

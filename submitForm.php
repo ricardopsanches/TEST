@@ -46,7 +46,7 @@ style_number0, style_colors0,
 style_number1, style_colors1,
 style_number2, style_colors2,
 style_number3, style_colors3,
-style_number4, style_colors4)
+style_number4, style_colors4, scribbles)
 VALUES(
 '$_POST[bgimage]','".$apprvs."','$_POST[PGTradio]','".$rqsts."','".$artNum2."','".$artName."','$_POST[copynum]','".$due."',
 '".$subBY."','".$asgnTo."','".$rtrnTo."','".$note1."','".$note2."',
@@ -54,7 +54,7 @@ VALUES(
 '$_POST[style_number1]','".$styCL1."',
 '$_POST[style_number2]','".$styCL2."',
 '$_POST[style_number3]','".$styCL3."',
-'$_POST[style_number4]','".$styCL4."'
+'$_POST[style_number4]','".$styCL4."','$_POST[scrib]'
 )";
 
 

@@ -44,6 +44,7 @@
 	<script src="js/set_autoFillparams.js"></script>
 	<script src="js/load_data.js"></script>
 	
+	
 	<script src="js/jQuery.searchBox.js"></script>
 	
 	<script src="js/submit_new.js"></script>
@@ -90,9 +91,11 @@
       
 	//$('#dropbox').lightBox();
 	
-    
+
     
   });
+  
+  
 
 
 	</script>
@@ -411,9 +414,11 @@
 
 <div id='message'></div>
 
-<div id="paintCanvas" style="position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; pointer-events:none; visibility: hidden;"> </div>
+<div id="paintCanvas" style="position: fixed; z-index: 100; width: 1000px; height: 500px; border: medium solid #FFF; pointer-events:none; visibility: hidden;"> </div>
 
-<div id="paintCanvasPARENT" align="left" style="position: fixed; z-index: 100; left: 80%; top: 0; width: 100%; height: 20px; border-bottom-left-radius: 6px; background-color: white; pointer-events:all; visibility: hidden;"><a href="javascript:imageShrink();">CLOSE</a><a>|</a><a href="javascript:saveImage();">SAVE</a></div>
+<div id="paintCanvasPARENT" align="left" style="position: fixed; overflow: hidden; z-index: 100; left: 80%; top: 0; width: 100%; height: 20px; border-bottom-left-radius: 6px; background-color: white; pointer-events:all; visibility: hidden;"><a href="javascript:imageShrink();">CLOSE</a><a>|</a><a href="javascript:saveImage();">SAVE</a><a>|</a><a href="javascript:loadImage();">LOAD</a></div>
+
+
 
 	</body>
 </html>
@@ -530,8 +535,45 @@ $("#dropbox").hover(function() {
 
 
 $("#dropbox").click(function() {
-	imageExplode();
+
+	//if ($scribbles != "") { $("#paintCanvas").wPaint("image", $scribbles) };
+	
+	if ($dropFile) {imageExplode()};
+	
+	alert($imgDIVx);
+		
+		$('#paintCanvas').append('<img id="imgScale" src="'+$dropFile+'" style="visibility:hidden; display:none;">');
+			var image_scale = document.getElementById('imgScale');	
+				var imY = image_scale.height;
+				var imX = image_scale.width;
+		
+				var dcY = $(document).height();
+				var dcX = $(document).width();
+				
+					var newY = (dcY * .5) - (imY * .7);
+					var newX = (dcX * .5) - (imX * .6);
+					
+					//alert(newY);
+		
+		
+		//var position = $("#lbCenter").position();
+			
+			
+			
+				//alert("imY:"+imY+"|imX:"+imX);
+				//alert("dcY:"+dcY+"|dcX:"+dcX);
+
+		
+			$("#paintCanvas").css('position','absolute');
+			
+			$("#paintCanvas").css('overflow','hidden');
+			
+			$("#paintCanvas").css('top',newY);
+			
+			$("#paintCanvas").css('left','10%');
+			
 });
+
 
 function imageExplode() {
 	$("#paintCanvasPARENT").hide();
@@ -560,9 +602,9 @@ function imageShrink() {
 
 function saveImage() {
 		
-		var noteImageData = $("#paintCanvas").wPaint("image");
+		var $noteImageData = $("#paintCanvas").wPaint("image");
 		
-				//alert(imageData);
+				alert($noteImageData);
 		//$("#message").attr("src", imageData);
 		//$(document.body).append('<img src="'+noteImageData+'">');
 		
@@ -571,19 +613,20 @@ function saveImage() {
 	$.ajax({
     type: "POST",
     url: "post_file_notes.php",
-    data: {'img':noteImageData },
+    data: {'img':$noteImageData },
     cache: false,
     success: function(echo)
         {
 			alert(echo);
         }
     });
-    
-    
-		
-		
-		
+    	
 };	
+
+
+function loadImage(data) {
+	$("#paintCanvas").wPaint("image", data);
+};
 
 	
 		

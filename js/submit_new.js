@@ -1,10 +1,13 @@
 //GETS SPAN OBJECTS & FORMATS POST SUBMISSION
 function submit_new() { //RESPONDS TO FORM SUBMISSION
 
+	//SETS SCRIBBLE NOTES VARIABLE
+	var noteImageData = $("#paintCanvas").wPaint("image");
+	
         	if ($('#emailCHK').is(":checked")) {
 				var eml = $('input[name=email_field]').val();
 				if (eml == "") {
-					alert ("Missing Email!");
+					alert ("Enter a username to the 'assign to' field, or un-check the email option.");
 					return
 				};	
 			};
@@ -79,30 +82,30 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
 		//////
 		var cnum = $('input[name=cNum]').val();
 		if (cnum == "") {
-			alert ("Missing Concept Number!");
+			alert ("Please complete the 'Concept Number' field.");
 			return
 		};
 		
 		//////
 		var cname = $('input[name=cName]').val();
-		if (cname == "") {
-			alert ("Missing Concept Name!");
-			return
-		};
-		
+		//if (cname == "") {
+		//	alert ("Missing Concept Name!");
+		//	return
+		//};
+
 	//////////
 		var asgnFROM = $('input[name=subBY]').val();
 		if (asgnFROM == "") {
-			alert ("Missing Submission Name!");
+			alert ("Please complete the 'Submitted By' field.");
 			return
 		};
 		
 		//////
 		var asgnTO = $('input[name=email_field]').val();
-		if (asgnTO == "") {
-			alert ("Missing Assign To!");
-			return
-		};		
+		//if (asgnTO == "") {
+		//	alert ("Missing Assign To!");
+		//	return
+		//};		
 		
 		//////
 		var rtrnTO = $('input[name=return_to]').val();
@@ -156,8 +159,8 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
 			else
 		
 			{
-				alert ("Missing Image!");
-				return;
+				//alert ("Missing Image!");
+				//return;
 			};
 		
 		/////
@@ -174,10 +177,10 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
 		//};
 		
 		/////
-		if (allVals2 == "") {
-			alert ("No Request Type Indicated!");
-			return
-		};
+		//if (allVals2 == "") {
+		//	alert ("No Request Type Indicated!");
+		//	return
+		//};
 		
 	//alert($strUser[2] + " " + $toArray[2])
 		
@@ -186,7 +189,7 @@ function submit_new() { //RESPONDS TO FORM SUBMISSION
     url: "submitForm.php",
     data: {'PGTradio':page_type, 'apprvby':allVals, 'rqstneed':allVals2,'bgimage':BGimage, 'new_art_concept_num':cnum, 'copynum':cpyNum, 'art_name':cname, 'due_date':dDate, 
     'submitted_by':asgnFROM, 'assign_to':asgnTO,
-    'return_to':rtrnTO, 'notes_1':notes1, 'notes_2':notes2,
+    'return_to':rtrnTO, 'notes_1':notes1, 'notes_2':notes2, 'scrib':noteImageData,
     'style_number0':$strUser[0], 'style_colors0':$toArray[0], 
     'style_number1':$strUser[1], 'style_colors1':$toArray[1], 
     'style_number2':$strUser[2], 'style_colors2':$toArray[2], 
